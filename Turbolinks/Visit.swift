@@ -203,10 +203,6 @@ class ColdBootVisit: Visit, WKNavigationDelegate, WebViewPageLoadDelegate {
             }
         } else {
             decisionHandler(.cancel)
-            fail {
-                let error = NSError(code: .networkFailure, localizedDescription: "An unknown error occurred")
-                self.delegate?.visit(self, requestDidFailWithError: error)
-            }
         }
     }
 
