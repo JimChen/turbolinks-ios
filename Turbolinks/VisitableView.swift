@@ -206,7 +206,16 @@ open class VisitableView: UIView {
     }
 
     private func addFillConstraints(forView view: UIView) {
+      if #available(iOS 11.0, *) {
+        NSLayoutConstraint.activate([
+          leadingAnchor.constraint(equalTo: view.leadingAnchor),
+          trailingAnchor.constraint(equalTo: view.trailingAnchor),
+          safeAreaLayoutGuide.topAnchor.constraint(equalTo: view.topAnchor),
+          safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+      } else {
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|", options: [], metrics: nil, views: [ "view": view ]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: [], metrics: nil, views: [ "view": view ]))
+      }
     }
 }
