@@ -75,10 +75,10 @@ open class Session: NSObject {
         }
 
         currentVisit?.cancel()
-        currentVisit = visit
-
         visit.delegate = self
         visit.start()
+      
+        currentVisit = visit
     }
 
     open func reload() {
