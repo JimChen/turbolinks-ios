@@ -55,6 +55,10 @@ open class Session: NSObject {
     open var topmostVisitable: Visitable? {
         return topmostVisit?.visitable
     }
+  
+    open var currentVisitable: Visitable? {
+      return currentVisit?.visitable
+    }
 
     open func visit(_ visitable: Visitable) {
         visitVisitable(visitable, action: .Advance)
