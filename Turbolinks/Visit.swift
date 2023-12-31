@@ -189,6 +189,15 @@ class ColdBootVisit: Visit, WKNavigationDelegate, WebViewPageLoadDelegate {
             decisionHandler(.allow)
         }
     }
+  
+    public func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+      DispatchQueue.global(qos: .background).async {
+        let trust = challenge.protectionSpace.serverTrust!
+        let exceptions = SecTrustCopyExceptions(trust)
+        SecTrustSetExceptions(trust, exceptions)
+        completionHandler(.useCredential, URLCredential(trust: trust))
+      }
+    }
 
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         if let httpResponse = navigationResponse.response as? HTTPURLResponse {

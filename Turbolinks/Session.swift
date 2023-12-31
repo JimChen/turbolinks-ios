@@ -283,6 +283,13 @@ extension Session: WKNavigationDelegate {
             reload()
         }
     }
+  
+    public func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        let trust = challenge.protectionSpace.serverTrust!
+        let exceptions = SecTrustCopyExceptions(trust)
+        SecTrustSetExceptions(trust, exceptions)
+        completionHandler(.useCredential, URLCredential(trust: trust))
+    }
 
     fileprivate struct NavigationDecision {
         let navigationAction: WKNavigationAction
