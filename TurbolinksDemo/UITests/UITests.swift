@@ -1,5 +1,6 @@
 import XCTest
 
+@MainActor
 class TurbolinksDemoUITests: XCTestCase {
     let app = XCUIApplication()
 

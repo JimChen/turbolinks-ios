@@ -2,6 +2,7 @@ import XCTest
 import WebKit
 @testable import Turbolinks
 
+@MainActor
 class ScriptMessageTest: XCTestCase {
     func testParseWithInvalidBody() {
         let script = FakeScriptMessage(body: "foo")
