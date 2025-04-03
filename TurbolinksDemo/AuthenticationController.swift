@@ -1,7 +1,7 @@
 import UIKit
 import WebKit
 
-protocol AuthenticationControllerDelegate: class {
+protocol AuthenticationControllerDelegate: AnyObject {
     func authenticationControllerDidAuthenticate(_ authenticationController: AuthenticationController)
 }
 

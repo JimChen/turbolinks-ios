@@ -93,11 +93,11 @@ extension ApplicationController: SessionDelegate {
     }
     
     func sessionDidStartRequest(_ session: Session) {
-        application.isNetworkActivityIndicatorVisible = true
+        NetworkActivityIndicatorManager.shared.show()
     }
 
     func sessionDidFinishRequest(_ session: Session) {
-        application.isNetworkActivityIndicatorVisible = false
+        NetworkActivityIndicatorManager.shared.hide()
     }
 }
 
