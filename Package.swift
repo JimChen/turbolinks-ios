@@ -4,21 +4,20 @@
 import PackageDescription
 
 let package = Package(
-    name: "turbolinks-ios",
+    name: "Turbolinks",
+    platforms: [
+        .iOS(.v13) // Adjust this version as needed
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "turbolinks-ios",
-            targets: ["turbolinks-ios"]),
+            name: "Turbolinks",
+            targets: ["Turbolinks"]
+        ),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "turbolinks-ios"),
-        .testTarget(
-            name: "turbolinks-iosTests",
-            dependencies: ["turbolinks-ios"]
-        ),
+            name: "Turbolinks",
+            path: "Turbolink"
+        )
     ]
 )
